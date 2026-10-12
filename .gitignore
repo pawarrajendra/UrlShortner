@@ -8,3 +8,7 @@ target/
 .DS_Store
 __pycache__/
 *.pyc
+/.github/
+/.idea/
+/.m2-cache/
+/.mvn/
