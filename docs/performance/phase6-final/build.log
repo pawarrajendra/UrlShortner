@@ -1,0 +1,128 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 565B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 559B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 ...
+
+#4 [auth] library/eclipse-temurin:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#5 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 0.6s
+
+#5 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#5 DONE 0.6s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 87B done
+#6 DONE 0.0s
+
+#7 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 done
+#7 DONE 0.0s
+
+#8 [build 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#8 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 done
+#8 DONE 0.0s
+
+#9 [internal] load build context
+#9 transferring context: 21.05kB 0.0s done
+#9 DONE 0.0s
+
+#10 [build 3/7] COPY .mvn .mvn
+#10 CACHED
+
+#11 [build 4/7] COPY mvnw pom.xml ./
+#11 CACHED
+
+#12 [build 2/7] WORKDIR /workspace
+#12 CACHED
+
+#13 [build 5/7] COPY config config
+#13 CACHED
+
+#14 [build 6/7] COPY src src
+#14 DONE 0.0s
+
+#15 [build 7/7] RUN ./mvnw -B -ntp -DskipTests -DskipITs package
+#15 1.753 [INFO] Scanning for projects...
+#15 5.794 [INFO] 
+#15 5.794 [INFO] ----------------------< com.example:urlshortener >----------------------
+#15 5.794 [INFO] Building urlshortener 0.1.0-SNAPSHOT
+#15 5.794 [INFO]   from pom.xml
+#15 5.794 [INFO] --------------------------------[ jar ]---------------------------------
+#15 21.65 [INFO] 
+#15 21.65 [INFO] --- spotless:2.44.5:check (format-check) @ urlshortener ---
+#15 26.82 [INFO] Index file does not exist. Fallback to an empty index
+#15 27.75 [INFO] Spotless.Java is keeping 60 files clean - 0 needs changes to be clean, 60 were already clean, 0 were skipped because caching determined they were already clean
+#15 27.76 [INFO] 
+#15 27.76 [INFO] --- checkstyle:3.6.0:check (style-check) @ urlshortener ---
+#15 38.16 [INFO] Starting audit...
+#15 38.16 Audit done.
+#15 38.17 [INFO] You have 0 Checkstyle violations.
+#15 38.18 [INFO] 
+#15 38.18 [INFO] --- resources:3.5.0:resources (default-resources) @ urlshortener ---
+#15 38.79 [INFO] Copying 2 resources from src/main/resources to target/classes
+#15 38.80 [INFO] Copying 3 resources from src/main/resources to target/classes
+#15 38.80 [INFO] 
+#15 38.80 [INFO] --- compiler:3.15.0:compile (default-compile) @ urlshortener ---
+#15 39.91 [INFO] Recompiling the module because of changed source code.
+#15 39.92 [INFO] Compiling 45 source files with javac [debug parameters release 21] to target/classes
+#15 40.76 [INFO] 
+#15 40.76 [INFO] --- resources:3.5.0:testResources (default-testResources) @ urlshortener ---
+#15 40.77 [INFO] skip non existing resourceDirectory /workspace/src/test/resources
+#15 40.77 [INFO] 
+#15 40.77 [INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ urlshortener ---
+#15 40.77 [INFO] Recompiling the module because of changed dependency.
+#15 40.77 [INFO] Compiling 15 source files with javac [debug parameters release 21] to target/test-classes
+#15 41.49 [INFO] 
+#15 41.49 [INFO] --- surefire:3.5.6:test (default-test) @ urlshortener ---
+#15 42.80 [INFO] Tests are skipped.
+#15 42.80 [INFO] 
+#15 42.80 [INFO] --- jar:3.5.0:jar (default-jar) @ urlshortener ---
+#15 45.21 [INFO] Building jar: /workspace/target/urlshortener-0.1.0-SNAPSHOT.jar
+#15 45.25 [INFO] 
+#15 45.25 [INFO] --- spring-boot:4.1.0:repackage (repackage) @ urlshortener ---
+#15 49.08 [INFO] Replacing main artifact /workspace/target/urlshortener-0.1.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#15 49.08 [INFO] The original artifact has been renamed to /workspace/target/urlshortener-0.1.0-SNAPSHOT.jar.original
+#15 49.08 [INFO] ------------------------------------------------------------------------
+#15 49.08 [INFO] BUILD SUCCESS
+#15 49.08 [INFO] ------------------------------------------------------------------------
+#15 49.08 [INFO] Total time:  47.334 s
+#15 49.08 [INFO] Finished at: 2026-10-12T00:11:01Z
+#15 49.08 [INFO] ------------------------------------------------------------------------
+#15 DONE 49.3s
+
+#16 [stage-1 2/4] RUN apk add --no-cache curl && addgroup -S app && adduser -S app -G app
+#16 CACHED
+
+#17 [stage-1 3/4] WORKDIR /app
+#17 CACHED
+
+#18 [stage-1 4/4] COPY --from=build /workspace/target/urlshortener-0.1.0-SNAPSHOT.jar app.jar
+#18 DONE 0.1s
+
+#19 exporting to image
+#19 exporting layers
+#19 exporting layers 0.7s done
+#19 exporting manifest sha256:984005436f6b6f2c7ebf4964352faa23a6ca6cdf6bf2cc091573d3d83b471918 done
+#19 exporting config sha256:32123764a7c2c1cda4d0d9e03751b0119b7e4b9f0b90235072eaeb1bde1d39ad done
+#19 exporting attestation manifest sha256:ae5f37ae9e423bb55bdd859cab8b9aab84a0790d9edd8e611b6f91f1c927788c done
+#19 exporting manifest list sha256:754a9d452f4abb00660fa6f87d3e84e63ef7e013c23eec76f9afea378f3b0f10 done
+#19 naming to docker.io/library/urlshortener-p6-14a4d1ace8:test done
+#19 unpacking to docker.io/library/urlshortener-p6-14a4d1ace8:test
+#19 unpacking to docker.io/library/urlshortener-p6-14a4d1ace8:test 0.2s done
+#19 DONE 0.9s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ Image urlshortener-p6-14a4d1ace8:test Building 
+ Image urlshortener-p6-14a4d1ace8:test Built 

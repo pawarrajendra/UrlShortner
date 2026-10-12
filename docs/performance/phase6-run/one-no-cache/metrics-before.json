@@ -1,0 +1,273 @@
+{
+  "app-1": [
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "nonheap",
+        "id": "Compressed Class Space"
+      },
+      "value": 6614504.0
+    },
+    {
+      "name": "hikaricp.connections.usage",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "count": 103,
+      "totalSeconds": 0.166,
+      "maxSeconds": 0.053
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "heap",
+        "id": "Eden Space"
+      },
+      "value": 3575976.0
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "nonheap",
+        "id": "CodeHeap 'non-profiled nmethods'"
+      },
+      "value": 2991488.0
+    },
+    {
+      "name": "analytics.queue.oldest.age.seconds",
+      "tags": {},
+      "value": 0.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "nonheap",
+        "id": "Compressed Class Space"
+      },
+      "value": 1073741824.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "nonheap",
+        "id": "CodeHeap 'non-profiled nmethods'"
+      },
+      "value": 122916864.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "heap",
+        "id": "Eden Space"
+      },
+      "value": 71630848.0
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "nonheap",
+        "id": "CodeHeap 'non-nmethods'"
+      },
+      "value": 1436928.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "heap",
+        "id": "Survivor Space"
+      },
+      "value": 8912896.0
+    },
+    {
+      "name": "redirect.fallback.active",
+      "tags": {},
+      "value": 0.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "heap",
+        "id": "Tenured Gen"
+      },
+      "value": 178978816.0
+    },
+    {
+      "name": "analytics.workers.active",
+      "tags": {},
+      "value": 0.0
+    },
+    {
+      "name": "http.server.requests",
+      "tags": {
+        "error": "none",
+        "exception": "none",
+        "method": "GET",
+        "outcome": "SUCCESS",
+        "status": "200",
+        "uri": "/health/ready"
+      },
+      "count": 1,
+      "totalSeconds": 0.726260417,
+      "maxSeconds": 0.726260417,
+      "p95Seconds": 0.704643072
+    },
+    {
+      "name": "hikaricp.connections.max",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "value": 8.0
+    },
+    {
+      "name": "http.server.requests",
+      "tags": {
+        "error": "none",
+        "exception": "none",
+        "method": "HEAD",
+        "outcome": "REDIRECTION",
+        "status": "302",
+        "uri": "/r/{code}"
+      },
+      "count": 100,
+      "totalSeconds": 0.494150456,
+      "maxSeconds": 0.181793333,
+      "p95Seconds": 0.006782976
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "nonheap",
+        "id": "Metaspace"
+      },
+      "value": 49980192.0
+    },
+    {
+      "name": "redirect.mapping.queries",
+      "tags": {},
+      "count": 100.0
+    },
+    {
+      "name": "analytics.queue.depth",
+      "tags": {},
+      "value": 0.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "nonheap",
+        "id": "CodeHeap 'profiled nmethods'"
+      },
+      "value": 122912768.0
+    },
+    {
+      "name": "hikaricp.connections.acquire",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "count": 103,
+      "totalSeconds": 0.412758749,
+      "maxSeconds": 0.409934458
+    },
+    {
+      "name": "hikaricp.connections.min",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "value": 0.0
+    },
+    {
+      "name": "hikaricp.connections",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "value": 1.0
+    },
+    {
+      "name": "hikaricp.connections.timeout",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "count": 0.0
+    },
+    {
+      "name": "hikaricp.connections.pending",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "value": 0.0
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "nonheap",
+        "id": "CodeHeap 'profiled nmethods'"
+      },
+      "value": 12101760.0
+    },
+    {
+      "name": "hikaricp.connections.active",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "value": 0.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "nonheap",
+        "id": "CodeHeap 'non-nmethods'"
+      },
+      "value": 5828608.0
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "heap",
+        "id": "Survivor Space"
+      },
+      "value": 1508296.0
+    },
+    {
+      "name": "hikaricp.connections.idle",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "value": 1.0
+    },
+    {
+      "name": "jvm.memory.used",
+      "tags": {
+        "area": "heap",
+        "id": "Tenured Gen"
+      },
+      "value": 21726592.0
+    },
+    {
+      "name": "jvm.memory.max",
+      "tags": {
+        "area": "nonheap",
+        "id": "Metaspace"
+      },
+      "value": -1.0
+    },
+    {
+      "name": "redirect.coalesced.active",
+      "tags": {},
+      "value": 0.0
+    },
+    {
+      "name": "hikaricp.connections.creation",
+      "tags": {
+        "pool": "HikariPool-1"
+      },
+      "count": 1,
+      "totalSeconds": 0.407,
+      "maxSeconds": 0.407
+    },
+    {
+      "name": "process.cpu.usage",
+      "tags": {},
+      "value": 0.8744897959183674
+    }
+  ]
+}

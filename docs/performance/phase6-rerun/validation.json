@@ -1,0 +1,16 @@
+[
+  {
+    "name": "hot-key",
+    "elapsedSeconds": 60.09334070800001,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": true,
+    "degradedVariant": false
+  },
+  {
+    "name": "cold-cache",
+    "elapsedSeconds": 60.000974292,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": false,
+    "degradedVariant": false
+  }
+]

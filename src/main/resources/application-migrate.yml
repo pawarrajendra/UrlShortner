@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+  datasource:
+    username: ${DATABASE_MIGRATION_USERNAME:}
+    password: ${DATABASE_MIGRATION_PASSWORD:}
+    hikari:
+      # Flyway acquires separate metadata/migration connections.
+      maximum-pool-size: 2
+management:
+  endpoint:
+    health:
+      validate-group-membership: false

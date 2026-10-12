@@ -1,0 +1,89 @@
+spring:
+  application:
+    name: urlshortener
+  main:
+    banner-mode: 'off'
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/urlshortener}
+    username: ${DATABASE_USERNAME:}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 0
+      connection-timeout: 1000
+      initialization-fail-timeout: -1
+      connection-init-sql: "SET TIME ZONE 'UTC'"
+      data-source-properties:
+        connectTimeout: 2
+        socketTimeout: 3
+  jdbc:
+    template:
+      query-timeout: 1s
+  flyway:
+    enabled: false
+  sql:
+    init:
+      mode: never
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: none
+  tomcat:
+    threads:
+      max: 64
+    max-connections: 128
+    accept-count: 32
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+app:
+  public-base-url: ${PUBLIC_BASE_URL:http://localhost:8080}
+  instance-id: ${APP_INSTANCE_ID:app-local}
+  expected-schema-version: 3
+  analytics:
+    workers: ${ANALYTICS_WORKERS:2}
+    queue-capacity: ${ANALYTICS_QUEUE_CAPACITY:1000}
+    max-queue-wait: ${ANALYTICS_MAX_QUEUE_WAIT:5s}
+    cleanup-enabled: ${ANALYTICS_CLEANUP_ENABLED:true}
+    cleanup-batch-size: ${ANALYTICS_CLEANUP_BATCH_SIZE:1000}
+    cleanup-interval: ${ANALYTICS_CLEANUP_INTERVAL:1h}
+  cache:
+    enabled: ${REDIRECT_CACHE_ENABLED:false}
+    consistency-mode: ${REDIRECT_CONSISTENCY_MODE:cached}
+    redis-host: ${REDIS_HOST:localhost}
+    redis-port: ${REDIS_PORT:6379}
+    timeout: ${REDIS_TIMEOUT:100ms}
+    breaker-cooldown: 2s
+    breaker-failures: 3
+    fallback-concurrency: ${REDIRECT_FALLBACK_CONCURRENCY:4}
+    coalesced-concurrency: 32
+    coalesced-wait: 1s
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: livenessState
+        readiness:
+          include: readinessState,db,schema
+logging:
+  pattern:
+    level: '%5p [instance:%X{appInstance} requestId:%X{requestId}]'
+  level:
+    com.zaxxer.hikari: OFF
+    org.springframework.jdbc: WARN
+    io.lettuce.core.protocol.ConnectionWatchdog: OFF
+    org.flywaydb: WARN
+    org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter: OFF
+    org.springframework.boot.SpringApplication: OFF

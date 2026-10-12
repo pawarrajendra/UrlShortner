@@ -1,0 +1,81 @@
+ Image urlshortener-p7-d46907dd3e:test Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 673B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 559B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 ...
+
+#4 [auth] library/eclipse-temurin:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#5 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 0.6s
+
+#5 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#5 DONE 0.6s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 87B done
+#6 DONE 0.0s
+
+#7 [stage-1 1/4] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.0s done
+#7 DONE 0.0s
+
+#8 [build 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#8 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.0s done
+#8 DONE 0.0s
+
+#9 [internal] load build context
+#9 transferring context: 249.04kB 0.0s done
+#9 DONE 0.0s
+
+#10 [stage-1 2/4] RUN apk add --no-cache curl && addgroup -S app && adduser -S app -G app
+#10 CACHED
+
+#11 [build 2/7] WORKDIR /workspace
+#11 CACHED
+
+#12 [build 7/7] RUN ./mvnw -B -ntp -DskipTests -DskipITs package
+#12 CACHED
+
+#13 [stage-1 3/4] WORKDIR /app
+#13 CACHED
+
+#14 [build 4/7] COPY mvnw pom.xml ./
+#14 CACHED
+
+#15 [build 5/7] COPY config config
+#15 CACHED
+
+#16 [build 3/7] COPY .mvn .mvn
+#16 CACHED
+
+#17 [build 6/7] COPY src src
+#17 CACHED
+
+#18 [stage-1 4/4] COPY --from=build /workspace/target/urlshortener-0.1.0-SNAPSHOT.jar app.jar
+#18 CACHED
+
+#19 exporting to image
+#19 exporting layers done
+#19 exporting manifest sha256:3b274fdca0edba4b8924432c3d5c7db2870a76bf1b4905a477a4daa94b44f92c done
+#19 exporting config sha256:4eb4fc1b96ec5b3b1e7757aae183c711166be51f7ee70e2f4862f1d4a17188ca done
+#19 exporting attestation manifest sha256:0cdb448493f4eff2a02b8b9b99e39f0016fc32c2a641774b55f134983d57fbc5 done
+#19 exporting manifest list sha256:f0f030bb11cdfdd7419b454d6ab59d01fe7bfc3a276139958c6de6d6075242b5 done
+#19 naming to docker.io/library/urlshortener-p7-d46907dd3e:test done
+#19 unpacking to docker.io/library/urlshortener-p7-d46907dd3e:test
+#19 unpacking to docker.io/library/urlshortener-p7-d46907dd3e:test done
+#19 DONE 0.0s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ Image urlshortener-p7-d46907dd3e:test Built 

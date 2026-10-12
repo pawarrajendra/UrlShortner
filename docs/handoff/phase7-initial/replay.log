@@ -1,0 +1,13 @@
+PASS: Clean committed-source archive: Maven clean verify passed with shared download cache, no copied build output
+PASS: Fresh full Compose bootstrap, V1/V2/V3 migration and public readiness passed
+PASS: Create, keyed replay, metadata, exact GET/HEAD redirect semantics and one eventual GET event passed
+PASS: Disable convergence and bodyless HEAD errors passed
+PASS: Compose down/up with retained volume preserved disabled mapping, original keyed replay and committed event
+Traceback (most recent call last):
+  File "/Users/raj/Documents/ChatGPT/UrlShortner/scripts/phase7-smoke.py", line 164, in <module>
+    main()
+    ~~~~^^
+  File "/Users/raj/Documents/ChatGPT/UrlShortner/scripts/phase7-smoke.py", line 137, in main
+    assert 'checksum' in (failed.stdout+failed.stderr).lower()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

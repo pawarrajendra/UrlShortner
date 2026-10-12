@@ -1,0 +1,477 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.example:urlshortener >----------------------
+[INFO] Building urlshortener 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ urlshortener ---
+[INFO] 
+[INFO] --- spotless:2.44.5:check (format-check) @ urlshortener ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 60 files clean - 0 needs changes to be clean, 60 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- checkstyle:3.6.0:check (style-check) @ urlshortener ---
+[INFO] Starting audit...
+Audit done.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ urlshortener ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ urlshortener ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 45 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ urlshortener ---
+[INFO] skip non existing resourceDirectory /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ urlshortener ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 15 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ urlshortener ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.urlshortener.cache.RedirectResolverTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/raj/Documents/ChatGPT/UrlShortner/.m2-cache/net/bytebuddy/byte-buddy-agent/1.18.10/byte-buddy-agent-1.18.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.153 s -- in com.example.urlshortener.cache.RedirectResolverTest
+[INFO] Running com.example.urlshortener.config.FoundationConfigurationTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in com.example.urlshortener.config.FoundationConfigurationTest
+[INFO] Running com.example.urlshortener.config.RequestMetadataFilterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.example.urlshortener.config.RequestMetadataFilterTest
+[INFO] Running com.example.urlshortener.health.SchemaHealthIndicatorTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.104 s -- in com.example.urlshortener.health.SchemaHealthIndicatorTest
+[INFO] Running com.example.urlshortener.link.ExpirationPolicyTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s -- in com.example.urlshortener.link.ExpirationPolicyTest
+[INFO] Running com.example.urlshortener.link.RandomCodeGeneratorTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s -- in com.example.urlshortener.link.RandomCodeGeneratorTest
+[INFO] Running com.example.urlshortener.link.IdempotencyTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in com.example.urlshortener.link.IdempotencyTest
+[INFO] Running com.example.urlshortener.link.DestinationPolicyTest
+[INFO] Tests run: 45, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in com.example.urlshortener.link.DestinationPolicyTest
+[INFO] Running com.example.urlshortener.analytics.AnalyticsTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.258 s -- in com.example.urlshortener.analytics.AnalyticsTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 99, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ urlshortener ---
+[INFO] Building jar: /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source/target/urlshortener-0.1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.0:repackage (repackage) @ urlshortener ---
+[INFO] Replacing main artifact /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source/target/urlshortener-0.1.0-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source/target/urlshortener-0.1.0-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- failsafe:3.5.6:integration-test (default) @ urlshortener ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.urlshortener.integration.CacheIT
+19:48:01.355 [main] INFO org.testcontainers.images.PullPolicy -- Image pull policy will be performed by: DefaultPullPolicy()
+19:48:01.360 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+19:48:01.533 [main] INFO org.testcontainers.DockerClientFactory -- Testcontainers version: 2.0.5
+19:48:05.744 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with Docker accessed via Unix socket (/Users/raj/.docker/run/docker.sock)
+19:48:05.746 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+19:48:05.766 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  Server Version: 29.8.2
+  API Version: 1.56
+  Operating System: Docker Desktop
+  Total Memory: 3916 MB
+  Labels: 
+    com.docker.desktop.address=unix:///Users/raj/Library/Containers/com.docker.docker/Data/docker-cli.sock
+19:48:05.938 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Creating container for image: testcontainers/ryuk:0.14.0
+19:48:06.051 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 is starting: be02604689b5f3567ae5820b2741ad19a2499b3c6b6f6cffbfb9df4e2e43fe86
+19:48:06.311 [main] INFO tc.testcontainers/ryuk:0.14.0 -- Container testcontainers/ryuk:0.14.0 started in PT0.372711S
+19:48:06.316 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+19:48:06.316 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+19:48:06.316 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+19:48:06.316 [main] INFO tc.postgres:18.0-alpine -- Creating container for image: postgres:18.0-alpine
+19:48:06.388 [main] INFO tc.postgres:18.0-alpine -- Container postgres:18.0-alpine is starting: 56bff34a09158e5260d9624efdc349ad53e0a02228d2cdf41e2c1d7cdb8bb396
+19:48:07.510 [main] INFO tc.postgres:18.0-alpine -- Container postgres:18.0-alpine started in PT1.194S
+19:48:07.514 [main] INFO tc.postgres:18.0-alpine -- Container is started (JDBC URL: jdbc:postgresql://localhost:62581/urlshortener?loggerLevel=OFF)
+19:48:07.516 [main] INFO tc.redis:8.2.1-alpine -- Creating container for image: redis:8.2.1-alpine
+19:48:07.611 [main] INFO tc.redis:8.2.1-alpine -- Container redis:8.2.1-alpine is starting: 6b919032250724b9dc789f48ff8f88a2b8db971707ba7b46a3eccb0ceaa8b341
+19:48:07.816 [main] INFO tc.redis:8.2.1-alpine -- Container redis:8.2.1-alpine started in PT0.299562S
+19:48:08.137 [main] INFO org.flywaydb.core.FlywayExecutor -- Database: jdbc:postgresql://localhost:62581/urlshortener?loggerLevel=OFF (PostgreSQL 18.0)
+19:48:08.183 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Schema history table "public"."flyway_schema_history" does not exist yet
+19:48:08.184 [main] INFO org.flywaydb.core.internal.command.DbValidate -- Successfully validated 3 migrations (execution time 00:00.012s)
+19:48:08.197 [main] INFO org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory -- Creating Schema History table "public"."flyway_schema_history" ...
+19:48:08.234 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Current version of schema "public": << Empty Schema >>
+19:48:08.241 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "1 - core links and idempotency"
+19:48:08.264 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "2 - add link expiration"
+19:48:08.272 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Migrating schema "public" to version "3 - redirect events"
+19:48:08.285 [main] INFO org.flywaydb.core.internal.command.DbMigrate -- Successfully applied 3 migrations to schema "public", now at version v3 (execution time 00:00.020s)
+2026-10-11T19:48:08.594-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:08.596-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:09.317-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:09.332-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:09.332-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:09.373-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 740 ms
+2026-10-11T19:48:09.580-05:00  WARN [instance: requestId:] 54557 --- [urlshortener] [           main] i.n.r.d.DnsServerAddressStreamProviders  : Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+2026-10-11T19:48:09.880-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:09.908-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62586 (http) with context path '/'
+2026-10-11T19:48:09.913-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 1.529 seconds (process running for 9.246)
+2026-10-11T19:48:09.985-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:09.985-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:10.179-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:10.182-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:10.183-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:10.191-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 204 ms
+2026-10-11T19:48:10.268-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:10.275-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62587 (http) with context path '/'
+2026-10-11T19:48:10.276-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.305 seconds (process running for 9.61)
+2026-10-11T19:48:10.291-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:10.292-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:10.383-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:10.384-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:10.384-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:10.395-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 103 ms
+2026-10-11T19:48:10.462-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:10.469-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62588 (http) with context path '/'
+2026-10-11T19:48:10.471-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.193 seconds (process running for 9.804)
+2026-10-11T19:48:10.755-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:10.755-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:10.756-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:11.215-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:11.215-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:11.216-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:11.650-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [ioEventLoop-8-2] i.l.core.protocol.ReconnectionHandler    : Reconnected to localhost/<unresolved>:62576
+2026-10-11T19:48:11.734-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [ioEventLoop-9-2] i.l.core.protocol.ReconnectionHandler    : Reconnected to localhost/<unresolved>:62576
+2026-10-11T19:48:11.925-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:11.926-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:11.927-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:20.536-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:20.539-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:20.570-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:20.571-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:20.580-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:20.582-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.66 s -- in com.example.urlshortener.integration.CacheIT
+[INFO] Running com.example.urlshortener.integration.FoundationIT
+2026-10-11T19:48:20.946-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Creating container for image: postgres:18.0-alpine
+2026-10-11T19:48:21.038-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine is starting: bff0c480cd2e7dcfb80a9719287c5c31c1b635367e1d6e071ef2650321a313bb
+2026-10-11T19:48:22.053-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine started in PT1.107072S
+2026-10-11T19:48:22.054-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container is started (JDBC URL: jdbc:postgresql://localhost:62617/urlshortener?loggerLevel=OFF)
+2026-10-11T19:48:29.154-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:29.155-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "migrate"
+2026-10-11T19:48:29.300-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.169 seconds (process running for 28.637)
+2026-10-11T19:48:29.536-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:29.537-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:29.615-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:29.616-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:29.616-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:29.638-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 101 ms
+2026-10-11T19:48:29.696-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:29.700-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62644 (http) with context path '/'
+2026-10-11T19:48:29.702-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.175 seconds (process running for 29.039)
+2026-10-11T19:48:29.704-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-4-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:29.704-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:29.704-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-4-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-11T19:48:31.479-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:31.480-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:31.497-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:31.497-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:31.581-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:31.582-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:31.582-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:31.587-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 89 ms
+2026-10-11T19:48:31.641-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:31.645-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62653 (http) with context path '/'
+2026-10-11T19:48:31.646-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.159 seconds (process running for 30.984)
+2026-10-11T19:48:31.648-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-5-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:31.648-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-5-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:31.649-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-5-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:31.675-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:31.676-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:31.810-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:31.810-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:31.879-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:31.879-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:31.879-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:31.885-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 75 ms
+2026-10-11T19:48:31.939-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:31.946-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62661 (http) with context path '/'
+2026-10-11T19:48:31.948-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.147 seconds (process running for 31.285)
+2026-10-11T19:48:31.954-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-6-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:31.954-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-6-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:31.955-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-6-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:33.673-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:33.674-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.99 s -- in com.example.urlshortener.integration.FoundationIT
+[INFO] Running com.example.urlshortener.integration.AnalyticsIT
+2026-10-11T19:48:33.936-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Creating container for image: postgres:18.0-alpine
+2026-10-11T19:48:34.014-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine is starting: b5275be95514e7f25143a0805de0b43a70df11d92e3d6ae18fe88cdaf575fd09
+2026-10-11T19:48:35.001-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine started in PT1.064757S
+2026-10-11T19:48:35.001-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container is started (JDBC URL: jdbc:postgresql://localhost:62669/urlshortener?loggerLevel=OFF)
+2026-10-11T19:48:35.113-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:35.113-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:35.206-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:35.206-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:35.206-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:35.231-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 117 ms
+2026-10-11T19:48:35.287-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:35.291-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62672 (http) with context path '/'
+2026-10-11T19:48:35.293-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.195 seconds (process running for 34.632)
+2026-10-11T19:48:35.361-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-7-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:35.361-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-7-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:35.362-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-7-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-11T19:48:35.574-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:35.574-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:35.638-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:35.639-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:35.639-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:35.645-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 70 ms
+2026-10-11T19:48:35.706-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:35.715-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62711 (http) with context path '/'
+2026-10-11T19:48:35.716-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.149 seconds (process running for 35.055)
+2026-10-11T19:48:35.739-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:35.741-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+PASS: hard-killed child after one active and one queued accepted GET; both pending events lost, link retained.
+2026-10-11T19:48:37.774-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:37.774-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:37.839-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:37.839-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:37.839-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:37.845-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 70 ms
+2026-10-11T19:48:37.891-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:37.895-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62736 (http) with context path '/'
+2026-10-11T19:48:37.896-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.132 seconds (process running for 37.236)
+2026-10-11T19:48:37.898-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-9-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:37.898-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-9-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:37.898-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [o-auto-9-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-11T19:48:37.899-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [      Thread-20] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:37.953-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:37.994-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:37.995-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.238 s -- in com.example.urlshortener.integration.AnalyticsIT
+[INFO] Running com.example.urlshortener.integration.CoreApiIT
+2026-10-11T19:48:38.175-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Creating container for image: postgres:18.0-alpine
+2026-10-11T19:48:38.226-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine is starting: 9afe13e6cd2211081c7e2a8c6aac71bfd5245366f6be62ae27e62fd02752a0d3
+2026-10-11T19:48:39.173-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine started in PT0.997916S
+2026-10-11T19:48:39.173-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container is started (JDBC URL: jdbc:postgresql://localhost:62745/urlshortener?loggerLevel=OFF)
+2026-10-11T19:48:39.361-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:39.361-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : No active profile set, falling back to 1 default profile: "default"
+2026-10-11T19:48:39.419-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:39.419-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:39.419-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:39.429-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 67 ms
+2026-10-11T19:48:39.491-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:39.495-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62755 (http) with context path '/'
+2026-10-11T19:48:39.496-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.143 seconds (process running for 38.836)
+2026-10-11T19:48:39.502-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-10-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:39.503-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-10-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:39.503-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-10-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-11T19:48:39.957-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:39.959-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.944 s -- in com.example.urlshortener.integration.CoreApiIT
+[INFO] Running com.example.urlshortener.integration.ReliabilityIT
+2026-10-11T19:48:40.119-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Creating container for image: postgres:18.0-alpine
+2026-10-11T19:48:40.184-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine is starting: 3ea5a972ecb99c1146ba50572f1f9d16fd96d7d8d55c576bf96bb3f2fd3b1639
+2026-10-11T19:48:41.100-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container postgres:18.0-alpine started in PT0.981296S
+2026-10-11T19:48:41.100-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.postgres:18.0-alpine                  : Container is started (JDBC URL: jdbc:postgresql://localhost:62825/urlshortener?loggerLevel=OFF)
+2026-10-11T19:48:41.101-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.redis:8.2.1-alpine                    : Creating container for image: redis:8.2.1-alpine
+2026-10-11T19:48:41.168-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.redis:8.2.1-alpine                    : Container redis:8.2.1-alpine is starting: 8b17b6a607fcbc9c26ab3825eb2889261d02ea7e0da779cedd40c20ca95fad55
+2026-10-11T19:48:41.306-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] tc.redis:8.2.1-alpine                    : Container redis:8.2.1-alpine started in PT0.204995S
+2026-10-11T19:48:41.393-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:41.393-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "default"
+2026-10-11T19:48:41.472-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:41.473-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:41.473-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:41.482-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 88 ms
+2026-10-11T19:48:41.536-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:41.540-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62830 (http) with context path '/'
+2026-10-11T19:48:41.541-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.157 seconds (process running for 40.881)
+2026-10-11T19:48:41.548-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:41.548-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "default"
+2026-10-11T19:48:41.620-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:41.620-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:41.621-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:41.627-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 79 ms
+2026-10-11T19:48:41.674-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:41.677-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62831 (http) with context path '/'
+2026-10-11T19:48:41.679-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.136 seconds (process running for 41.019)
+2026-10-11T19:48:41.689-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:41.690-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "measure"
+2026-10-11T19:48:41.745-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:41.745-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:41.745-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:41.750-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 60 ms
+2026-10-11T19:48:41.819-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62833 (http) with context path '/'
+2026-10-11T19:48:41.839-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:41.839-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:41.839-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:41.844-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 23 ms
+2026-10-11T19:48:41.847-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-10-11T19:48:41.860-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62834 (http) with context path '/'
+2026-10-11T19:48:41.861-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.181 seconds (process running for 41.201)
+2026-10-11T19:48:41.883-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-13-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:41.883-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-13-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:41.884-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-13-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:41.906-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-14-exec-1] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServletRegistration'
+2026-10-11T19:48:41.906-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-14-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServletRegistration'
+2026-10-11T19:48:41.907-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-14-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:41.914-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:41.916-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:41.916-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:41.917-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:41.918-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-10-11T19:48:41.918-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServletRegistration'
+2026-10-11T19:48:41.923-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-12-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:41.924-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-12-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:44.849-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:44.849-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "default"
+2026-10-11T19:48:44.947-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:44.948-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:44.948-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:44.954-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 104 ms
+2026-10-11T19:48:45.015-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:45.019-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62855 (http) with context path '/'
+2026-10-11T19:48:45.020-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.187 seconds (process running for 44.361)
+2026-10-11T19:48:45.021-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:45.023-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:45.071-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v3.5.6 using Java 21.0.10 with PID 54557 (started by raj in /private/var/folders/l8/l935dby542sgs1cnn_244bph0000gn/T/urlshortener-p7-d46907dd3eh0h69iye/source)
+2026-10-11T19:48:45.071-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : The following 1 profile is active: "default"
+2026-10-11T19:48:45.137-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-11T19:48:45.138-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-11T19:48:45.138-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.25]
+2026-10-11T19:48:45.143-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 71 ms
+2026-10-11T19:48:45.184-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-11T19:48:45.188-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 62858 (http) with context path '/'
+2026-10-11T19:48:45.189-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 0.13 seconds (process running for 44.53)
+2026-10-11T19:48:48.287-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-16-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-11T19:48:48.288-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-16-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:48.289-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-16-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-11T19:48:48.297-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:48.299-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:48.339-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-11-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-11T19:48:48.340-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [-auto-11-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-10-11T19:48:59.486-05:00  WARN [instance:app-local requestId:66fc3012-0540-4cc3-9b25-3eb84a226d2c] 54557 --- [urlshortener] [-auto-11-exec-3] o.s.b.j.h.DataSourceHealthIndicator      : DataSource health check failed
+
+org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:84) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:362) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.boot.jdbc.health.DataSourceHealthIndicator.getProduct(DataSourceHealthIndicator.java:125) ~[spring-boot-jdbc-4.1.0.jar:4.1.0]
+	at org.springframework.boot.jdbc.health.DataSourceHealthIndicator.doDataSourceHealthCheck(DataSourceHealthIndicator.java:108) ~[spring-boot-jdbc-4.1.0.jar:4.1.0]
+	at org.springframework.boot.jdbc.health.DataSourceHealthIndicator.doHealthCheck(DataSourceHealthIndicator.java:102) ~[spring-boot-jdbc-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.contributor.AbstractHealthIndicator.health(AbstractHealthIndicator.java:80) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.contributor.HealthIndicator.health(HealthIndicator.java:37) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.Contributor$Blocking.getDescriptor(Contributor.java:148) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.Contributor$Blocking.getDescriptor(Contributor.java:126) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getDescriptorAndLogIfSlow(HealthEndpointSupport.java:172) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getDescriptor(HealthEndpointSupport.java:145) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getAggregateDescriptor(HealthEndpointSupport.java:157) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getDescriptor(HealthEndpointSupport.java:141) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getResult(HealthEndpointSupport.java:110) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpointSupport.getResult(HealthEndpointSupport.java:80) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpoint.health(HealthEndpoint.java:80) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at org.springframework.boot.health.actuate.endpoint.HealthEndpoint.healthForPath(HealthEndpoint.java:76) ~[spring-boot-health-4.1.0.jar:4.1.0]
+	at com.example.urlshortener.controller.HealthController.ready(HealthController.java:28) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:892) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:622) ~[tomcat-embed-core-11.0.25.jar:6.1]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874) ~[spring-webmvc-7.0.9.jar:7.0.9]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710) ~[tomcat-embed-core-11.0.25.jar:6.1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59) ~[tomcat-embed-websocket-11.0.25.jar:11.0.25]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at com.example.urlshortener.config.RequestMetadataFilter.doFilterInternal(RequestMetadataFilter.java:37) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.9.jar:7.0.9]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2201) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74) ~[tomcat-embed-core-11.0.25.jar:11.0.25]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+Caused by: java.sql.SQLTransientConnectionException: HikariPool-15 - Connection is not available, request timed out after 1006ms (total=0, active=0, idle=0, waiting=0)
+	at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:714) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:184) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:142) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:127) ~[HikariCP-7.0.2.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	... 66 common frames omitted
+Caused by: org.postgresql.util.PSQLException: This connection has been closed.
+	at org.postgresql.jdbc.PgConnection.checkClosed(PgConnection.java:1026) ~[postgresql-42.7.12.jar:42.7.12]
+	at org.postgresql.jdbc.PgConnection.setNetworkTimeout(PgConnection.java:1771) ~[postgresql-42.7.12.jar:42.7.12]
+	at com.zaxxer.hikari.pool.PoolBase.setNetworkTimeout(PoolBase.java:585) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.isConnectionDead(PoolBase.java:177) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:166) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:142) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:127) ~[HikariCP-7.0.2.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:407) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:491) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:501) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:533) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:539) ~[spring-jdbc-7.0.9.jar:7.0.9]
+	at com.example.urlshortener.health.SchemaHealthIndicator.health(SchemaHealthIndicator.java:23) ~[classes/:na]
+	... 61 common frames omitted
+
+2026-10-11T19:48:59.618-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:59.621-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-11T19:48:59.643-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [           main] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-11T19:48:59.645-05:00  INFO [instance: requestId:] 54557 --- [urlshortener] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.86 s -- in com.example.urlshortener.integration.ReliabilityIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 54, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- failsafe:3.5.6:verify (default) @ urlshortener ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:08 min
+[INFO] Finished at: 2026-10-11T19:49:00-05:00
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,776 @@
+
+========== Phase 0 — API contract ==========
+Contract: openapi.yaml. This script tests current Phases 1–5 APIs.
+Target: http://127.0.0.1:59273. curl -q ignores personal curl settings; no -L is used.
+
+========== Phase 1 — Application and database health ==========
+
+[2026-10-11T21:12:32.753Z] SENDING REQUEST
+  Check: Check process liveness
+  API does: Reports whether the application process is alive.
+  Method: GET
+  URL: http://127.0.0.1:59273/health/live
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 200 (expected 200)
+{
+    "status": "UP"
+}
+
+[2026-10-11T21:12:32.900Z] SENDING REQUEST
+  Check: Check PostgreSQL/schema readiness
+  API does: Checks PostgreSQL connectivity and the expected migration history.
+  Method: GET
+  URL: http://127.0.0.1:59273/health/ready
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 200 (expected 200)
+{
+    "status": "UP"
+}
+
+========== Phase 2 — Core URLs, validation and idempotency ==========
+
+[2026-10-11T21:12:33.015Z] SENDING REQUEST
+  Check: Create a non-expiring keyed link
+  API does: Creates an immutable short link, or replays its original keyed creation.
+  Method: POST
+  URL: http://127.0.0.1:59273/api/v1/links
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+    Content-Length: 58
+    Content-Type: application/json
+    Idempotency-Key: curl-api-15fcd67b3f5344a0aa3046e8f551f575
+  Body:
+    {
+      "url": "https://example.com/curl-demo?source=api#section"
+    }
+  Maximum request time: 10 seconds
+HTTP 201 (expected 201)
+{
+    "code": "bKlZhLe9",
+    "shortUrl": "http://localhost:8080/r/bKlZhLe9",
+    "url": "https://example.com/curl-demo?source=api#section",
+    "createdAt": "2026-10-11T21:12:33.082094Z",
+    "disabledAt": null,
+    "expiresAt": null
+}
+Saved CODE=bKlZhLe9; creation instance=app-2
+
+[2026-10-11T21:12:33.272Z] SENDING REQUEST
+  Check: Replay the same keyed creation
+  API does: Creates an immutable short link, or replays its original keyed creation.
+  Method: POST
+  URL: http://127.0.0.1:59273/api/v1/links
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+    Content-Length: 58
+    Content-Type: application/json
+    Idempotency-Key: curl-api-15fcd67b3f5344a0aa3046e8f551f575
+  Body:
+    {
+      "url": "https://example.com/curl-demo?source=api#section"
+    }
+  Maximum request time: 10 seconds
+HTTP 201 (expected 201)
+
+[2026-10-11T21:12:33.435Z] SENDING REQUEST
+  Check: Reject changed input with the same key
+  API does: Creates an immutable short link, or replays its original keyed creation.
+  Method: POST
+  URL: http://127.0.0.1:59273/api/v1/links
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+    Content-Length: 37
+    Content-Type: application/json
+    Idempotency-Key: curl-api-15fcd67b3f5344a0aa3046e8f551f575
+  Body:
+    {
+      "url": "https://example.com/changed"
+    }
+  Maximum request time: 10 seconds
+HTTP 409 (expected 409)
+{
+    "error": {
+        "code": "IDEMPOTENCY_CONFLICT",
+        "message": "The key was already used for a different request.",
+        "requestId": "1a52c8c8-9928-4101-a580-5e146b5ddc2f"
+    }
+}
+
+[2026-10-11T21:12:33.518Z] SENDING REQUEST
+  Check: Read active link metadata
+  API does: Reads current link metadata, including expiry and disabled state.
+  Method: GET
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 200 (expected 200)
+{
+    "code": "bKlZhLe9",
+    "shortUrl": "http://localhost:8080/r/bKlZhLe9",
+    "url": "https://example.com/curl-demo?source=api#section",
+    "createdAt": "2026-10-11T21:12:33.082094Z",
+    "disabledAt": null,
+    "expiresAt": null
+}
+
+[2026-10-11T21:12:33.640Z] SENDING REQUEST
+  Check: Resolve the public link and observe a GET attempt
+  API does: Resolves a public link; active links return 302 and submit best-effort analytics.
+  Method: GET
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+HTTP/1.1 302 
+Server: nginx
+Date: Sun, 11 Oct 2026 21:12:34 GMT
+Content-Length: 0
+Connection: keep-alive
+X-Request-Id: 2f5bfd11-36bb-49aa-9562-7b9046aa0a07
+Cache-Control: no-store
+X-App-Instance: app-2
+Location: https://example.com/curl-demo?source=api#section
+
+
+[2026-10-11T21:12:34.175Z] SENDING REQUEST
+  Check: Resolve HEAD without an analytics event
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+HTTP/1.1 302 
+Server: nginx
+Date: Sun, 11 Oct 2026 21:12:34 GMT
+Connection: keep-alive
+X-Request-Id: c3533d3e-ec1c-4ab2-bd0c-4d49527eacb3
+Cache-Control: no-store
+X-App-Instance: app-1
+Location: https://example.com/curl-demo?source=api#section
+
+
+[2026-10-11T21:12:34.620Z] SENDING REQUEST
+  Check: Reject an unsupported redirect method
+  API does: Tests unsupported redirect methods; only GET and HEAD are allowed.
+  Method: POST
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 405 (expected 405)
+{
+    "error": {
+        "code": "METHOD_NOT_ALLOWED",
+        "message": "Only GET and HEAD are supported.",
+        "requestId": "f9eaddf4-1429-42a4-9247-d4ee5f520985"
+    }
+}
+
+[2026-10-11T21:12:34.724Z] SENDING REQUEST
+  Check: Reject a malformed/missing redirect code
+  API does: Resolves a public link; active links return 302 and submit best-effort analytics.
+  Method: GET
+  URL: http://127.0.0.1:59273/r/not-a-code
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 404 (expected 404)
+{
+    "error": {
+        "code": "LINK_NOT_FOUND",
+        "requestId": "2478904d-00e4-4fb1-b83b-c77bf9ffeafa",
+        "message": "The link was not found."
+    }
+}
+
+========== Phase 3 — Optional expiration ==========
+
+[2026-10-11T21:12:34.875Z] SENDING REQUEST
+  Check: Create a link with a five-second UTC expiry
+  API does: Creates an immutable short link, or replays its original keyed creation.
+  Method: POST
+  URL: http://127.0.0.1:59273/api/v1/links
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+    Content-Length: 83
+    Content-Type: application/json
+  Body:
+    {
+      "url": "https://example.com/expiry-demo",
+      "expiresAt": "2026-10-11T21:12:39.838100Z"
+    }
+  Maximum request time: 10 seconds
+HTTP 201 (expected 201)
+{
+    "code": "apkyQXf2",
+    "shortUrl": "http://localhost:8080/r/apkyQXf2",
+    "url": "https://example.com/expiry-demo",
+    "createdAt": "2026-10-11T21:12:34.899762Z",
+    "disabledAt": null,
+    "expiresAt": "2026-10-11T21:12:39.838100Z"
+}
+
+[2026-10-11T21:12:35.013Z] SENDING REQUEST
+  Check: Check HEAD before expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:35.078Z] SENDING REQUEST
+  Check: Poll HEAD until expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:36.161Z] SENDING REQUEST
+  Check: Poll HEAD until expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:37.237Z] SENDING REQUEST
+  Check: Poll HEAD until expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:38.309Z] SENDING REQUEST
+  Check: Poll HEAD until expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:39.391Z] SENDING REQUEST
+  Check: Poll HEAD until expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:40.477Z] SENDING REQUEST
+  Check: Poll HEAD until expiry
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+
+[2026-10-11T21:12:40.634Z] SENDING REQUEST
+  Check: Validate the expired GET error
+  API does: Resolves a public link; active links return 302 and submit best-effort analytics.
+  Method: GET
+  URL: http://127.0.0.1:59273/r/apkyQXf2
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 410 (expected 410)
+{
+    "error": {
+        "code": "LINK_EXPIRED",
+        "message": "The link has expired.",
+        "requestId": "ac2d07eb-9155-45c9-9c43-d4f41126658e"
+    }
+}
+
+========== Phase 4 — Eventual analytics and UTC date buckets ==========
+
+[2026-10-11T21:12:40.800Z] SENDING REQUEST
+  Check: Record observed GET attempt 1
+  API does: Resolves a public link; active links return 302 and submit best-effort analytics.
+  Method: GET
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:40.853Z] SENDING REQUEST
+  Check: Record observed GET attempt 2
+  API does: Resolves a public link; active links return 302 and submit best-effort analytics.
+  Method: GET
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:40.895Z] SENDING REQUEST
+  Check: Poll asynchronously committed stats
+  API does: Reads committed GET observations in UTC buckets; counts can lag.
+  Method: GET
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9/stats
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 200 (expected 200)
+{
+    "code": "bKlZhLe9",
+    "from": "2026-10-05",
+    "to": "2026-10-12",
+    "observedRedirects": 3,
+    "daily": [
+        {
+            "date": "2026-10-05",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-06",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-07",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-08",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-09",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-10",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-11",
+            "observedRedirects": 3
+        }
+    ],
+    "availableFrom": "2026-10-11T21:12:33.082094Z",
+    "asOf": "2026-10-11T21:12:40.907874Z",
+    "partialRetention": true,
+    "recordingMode": "best-effort-async",
+    "eventuallyConsistent": true
+}
+
+[2026-10-11T21:12:41.052Z] SENDING REQUEST
+  Check: Query an explicit UTC date range
+  API does: Reads committed GET observations in UTC buckets; counts can lag.
+  Method: GET
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9/stats?from=2026-10-10&to=2026-10-12
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 200 (expected 200)
+{
+    "code": "bKlZhLe9",
+    "from": "2026-10-10",
+    "to": "2026-10-12",
+    "observedRedirects": 3,
+    "daily": [
+        {
+            "date": "2026-10-10",
+            "observedRedirects": 0
+        },
+        {
+            "date": "2026-10-11",
+            "observedRedirects": 3
+        }
+    ],
+    "availableFrom": "2026-10-11T21:12:33.082094Z",
+    "asOf": "2026-10-11T21:12:41.067154Z",
+    "partialRetention": true,
+    "recordingMode": "best-effort-async",
+    "eventuallyConsistent": true
+}
+
+[2026-10-11T21:12:41.208Z] SENDING REQUEST
+  Check: Reject an incomplete stats date range
+  API does: Reads committed GET observations in UTC buckets; counts can lag.
+  Method: GET
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9/stats?from=2026-10-10
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 400 (expected 400)
+{
+    "error": {
+        "code": "INVALID_DATE_RANGE",
+        "requestId": "1d3095bc-ddc0-47d3-9fdb-a6310d5801f8",
+        "message": "Supply one valid from/to UTC date window of at most 30 days."
+    }
+}
+
+========== Phase 5 — Shared mapping through NGINX and lifecycle convergence ==========
+
+[2026-10-11T21:12:41.303Z] SENDING REQUEST
+  Check: Observe warm redirect replica 1
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.376Z] SENDING REQUEST
+  Check: Observe warm redirect replica 2
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.453Z] SENDING REQUEST
+  Check: Observe warm redirect replica 3
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.524Z] SENDING REQUEST
+  Check: Observe warm redirect replica 4
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.597Z] SENDING REQUEST
+  Check: Observe warm redirect replica 5
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.670Z] SENDING REQUEST
+  Check: Observe warm redirect replica 6
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.741Z] SENDING REQUEST
+  Check: Observe warm redirect replica 7
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.826Z] SENDING REQUEST
+  Check: Observe warm redirect replica 8
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.895Z] SENDING REQUEST
+  Check: Observe warm redirect replica 9
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:41.979Z] SENDING REQUEST
+  Check: Observe warm redirect replica 10
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:42.058Z] SENDING REQUEST
+  Check: Observe warm redirect replica 11
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+
+[2026-10-11T21:12:42.135Z] SENDING REQUEST
+  Check: Observe warm redirect replica 12
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 302 (expected 302)
+Created on: app-2; resolution instances:
+app-1
+app-2
+
+[2026-10-11T21:12:42.208Z] SENDING REQUEST
+  Check: Disable the link (attempt 1)
+  API does: Commits irreversible disable, then attempts cache invalidation; retains the row.
+  Method: DELETE
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 204 (expected 204)
+
+[2026-10-11T21:12:42.251Z] SENDING REQUEST
+  Check: Disable the link (attempt 2)
+  API does: Commits irreversible disable, then attempts cache invalidation; retains the row.
+  Method: DELETE
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 204 (expected 204)
+
+[2026-10-11T21:12:42.292Z] SENDING REQUEST
+  Check: Poll cached-disable convergence
+  API does: Checks public redirect/lifecycle headers without a body or analytics event.
+  Method: HEAD
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+
+[2026-10-11T21:12:42.330Z] SENDING REQUEST
+  Check: Validate the disabled GET error
+  API does: Resolves a public link; active links return 302 and submit best-effort analytics.
+  Method: GET
+  URL: http://127.0.0.1:59273/r/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 410 (expected 410)
+{
+    "error": {
+        "code": "LINK_INACTIVE",
+        "requestId": "03f03acc-8147-4434-9ba4-b44a8c4c1ee1",
+        "message": "The link is disabled."
+    }
+}
+
+[2026-10-11T21:12:42.423Z] SENDING REQUEST
+  Check: Read retained disabled metadata
+  API does: Reads current link metadata, including expiry and disabled state.
+  Method: GET
+  URL: http://127.0.0.1:59273/api/v1/links/bKlZhLe9
+  Headers:
+    Host: 127.0.0.1:59273
+    Accept: */*
+    User-Agent: urlshortener-curl-walkthrough/1.0
+  Body:
+    (none)
+  Maximum request time: 10 seconds
+HTTP 200 (expected 200)
+{
+    "code": "bKlZhLe9",
+    "shortUrl": "http://localhost:8080/r/bKlZhLe9",
+    "url": "https://example.com/curl-demo?source=api#section",
+    "createdAt": "2026-10-11T21:12:33.082094Z",
+    "disabledAt": "2026-10-11T21:12:42.220758Z",
+    "expiresAt": null
+}
+
+========== Phases 6–7 — Additional verification and handoff ==========
+Fault/cache internals: python3 scripts/phase5-smoke.py (isolated Docker stack).
+Measured load, migration checks and final acceptance are separate from this API walkthrough.
+PASS: API purposes/statuses/headers/JSON validated. Retained codes: bKlZhLe9 apkyQXf2

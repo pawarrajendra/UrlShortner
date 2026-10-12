@@ -1,0 +1,16 @@
+{
+  "sourceRevision": "fc82a265285e694a9334d19c2c8bd0532c2153ad",
+  "project": "urlshortener-p7-d46907dd3e",
+  "startedAt": "2026-10-12T00:47:50.011140+00:00",
+  "checks": [
+    "Clean committed-source archive: Maven clean verify passed with shared download cache, no copied build output",
+    "Fresh full Compose bootstrap, V1/V2/V3 migration and public readiness passed",
+    "Create, keyed replay, metadata, exact GET/HEAD redirect semantics and one eventual GET event passed",
+    "Disable convergence and bodyless HEAD errors passed",
+    "Compose down/up with retained volume preserved disabled mapping, original keyed replay and committed event"
+  ],
+  "passed": false,
+  "cleanup": true,
+  "imageId": "sha256:f0f030bb11cdfdd7419b454d6ab59d01fe7bfc3a276139958c6de6d6075242b5",
+  "finishedAt": "2026-10-12T00:49:48.435236+00:00"
+}

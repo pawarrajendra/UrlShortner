@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.png binary
+mvnw.cmd text eol=crlf whitespace=cr-at-eol
+
+# Raw CLI transcripts preserve protocol status lines and tool banners verbatim.
+curl-walkthrough.log -whitespace
+docs/performance/**/build.log -whitespace
+docs/performance/**/k6.log -whitespace
+docs/handoff/**/build.log -whitespace
+docs/handoff/**/verify.log -whitespace

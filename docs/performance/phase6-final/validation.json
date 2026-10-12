@@ -1,0 +1,51 @@
+[
+  {
+    "name": "one-no-cache",
+    "elapsedSeconds": 59.999048957999996,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": true,
+    "degradedVariant": false
+  },
+  {
+    "name": "two-no-cache",
+    "elapsedSeconds": 59.999589791,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": true,
+    "degradedVariant": false
+  },
+  {
+    "name": "two-warm-cache",
+    "elapsedSeconds": 59.999806208,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": true,
+    "degradedVariant": false
+  },
+  {
+    "name": "hot-key",
+    "elapsedSeconds": 59.949287167,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": false,
+    "degradedVariant": false
+  },
+  {
+    "name": "cold-cache",
+    "elapsedSeconds": 60.001561541,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": false,
+    "degradedVariant": false
+  },
+  {
+    "name": "redis-outage",
+    "elapsedSeconds": 60.002074166999996,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": false,
+    "degradedVariant": true
+  },
+  {
+    "name": "slow-analytics",
+    "elapsedSeconds": 60.000455957999996,
+    "measurementWindowValid": true,
+    "healthyTargetPassed": false,
+    "degradedVariant": true
+  }
+]

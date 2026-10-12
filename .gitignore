@@ -1,0 +1,10 @@
+target/
+.m2-cache/
+.env
+.env.*
+!.env.example
+.idea/
+*.iml
+.DS_Store
+__pycache__/
+*.pyc

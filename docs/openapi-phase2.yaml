@@ -1,0 +1,528 @@
+---
+openapi: 3.0.3
+info:
+  title: URL Shortener API — Phase 2 Baseline
+  version: 0.2.0
+  description: 'Implemented P2 checkpoint: immutable links, public API access, optional
+    24-hour idempotency, metadata, disable, GET/HEAD redirects and health. No expiry,
+    analytics or cache. URL policy and operational limitations: docs/phase0-contracts.md
+    and README.md. Feature snapshot reconciled with current public API access; original
+    contract remains in its recorded source revision.'
+servers:
+- url: http://localhost:8080
+  description: Local Compose application; start using README.md.
+paths:
+  "/api/v1/links":
+    post:
+      operationId: createLink
+      summary: Create an immutable short link (or replay original keyed result)
+      x-implementation-phase: P2
+      responses:
+        '201':
+          description: Creation result; keyed replay returns original metadata, not
+            current disabled state.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/LinkResponse"
+              example:
+                code: Ab3dE9xQ
+                shortUrl: http://localhost:8080/r/Ab3dE9xQ
+                url: https://example.com/articles?source=demo
+                createdAt: '2026-10-10T15:00:00Z'
+                disabledAt:
+        '400':
+          "$ref": "#/components/responses/BadRequest"
+        '409':
+          "$ref": "#/components/responses/Conflict"
+        '413':
+          "$ref": "#/components/responses/TooLarge"
+        '415':
+          "$ref": "#/components/responses/UnsupportedMedia"
+        '503':
+          "$ref": "#/components/responses/Unavailable"
+        '500':
+          "$ref": "#/components/responses/InternalError"
+      parameters:
+      - "$ref": "#/components/parameters/IdempotencyKey"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/CreateLinkRequest"
+            example:
+              url: https://example.com/articles?source=demo
+  "/api/v1/links/{code}":
+    parameters:
+    - "$ref": "#/components/parameters/Code"
+    get:
+      operationId: getLink
+      summary: Read current retained link metadata
+      x-implementation-phase: P2
+      responses:
+        '200':
+          description: Current retained metadata, including disabled links.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/LinkResponse"
+              example:
+                code: Ab3dE9xQ
+                shortUrl: http://localhost:8080/r/Ab3dE9xQ
+                url: https://example.com/articles?source=demo
+                createdAt: '2026-10-10T15:00:00Z'
+                disabledAt:
+        '404':
+          "$ref": "#/components/responses/NotFound"
+        '503':
+          "$ref": "#/components/responses/Unavailable"
+        '500':
+          "$ref": "#/components/responses/InternalError"
+    delete:
+      operationId: disableLink
+      summary: Disable irreversibly; repeated existing disable is successful
+      x-implementation-phase: P2
+      responses:
+        '204':
+          description: Committed database disable; cached redirects may converge within
+            original freshness window.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+        '404':
+          "$ref": "#/components/responses/NotFound"
+        '503':
+          "$ref": "#/components/responses/Unavailable"
+        '500':
+          "$ref": "#/components/responses/InternalError"
+  "/r/{code}":
+    parameters:
+    - "$ref": "#/components/parameters/Code"
+    get:
+      operationId: resolveLink
+      summary: Resolve an active public link using PostgreSQL
+      x-implementation-phase: P2
+      responses:
+        '302':
+          description: Active retained mapping; no analytics is recorded in Phase
+            2.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+            Location:
+              description: Stored validated destination.
+              schema:
+                type: string
+                format: uri
+              example: https://example.com/articles?source=demo
+        '404':
+          "$ref": "#/components/responses/NotFound"
+        '410':
+          "$ref": "#/components/responses/Gone"
+        '503':
+          "$ref": "#/components/responses/Unavailable"
+        '500':
+          "$ref": "#/components/responses/InternalError"
+      description: Phase 2 reads PostgreSQL directly; expiry, analytics and caching
+        are later phases.
+    head:
+      operationId: headLink
+      summary: Resolve lifecycle and headers without event or response body
+      x-implementation-phase: P2
+      responses:
+        '302':
+          description: Active retained mapping; no analytics is recorded in Phase
+            2.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+            Location:
+              description: Stored validated destination.
+              schema:
+                type: string
+                format: uri
+              example: https://example.com/articles?source=demo
+        '404':
+          "$ref": "#/components/responses/HeadNotFound"
+        '410':
+          "$ref": "#/components/responses/HeadGone"
+        '503':
+          "$ref": "#/components/responses/HeadUnavailable"
+        '500':
+          "$ref": "#/components/responses/HeadInternalError"
+  "/health/live":
+    get:
+      operationId: liveness
+      summary: Process responsiveness; no DB dependency
+      x-implementation-phase: P1
+      responses:
+        '200':
+          description: Process responsive.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HealthResponse"
+              example:
+                status: UP
+  "/health/ready":
+    get:
+      operationId: readiness
+      summary: Database/schema readiness; Redis degradation separate
+      x-implementation-phase: P1
+      responses:
+        '200':
+          description: Database/schema ready.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HealthResponse"
+              example:
+                status: UP
+        '503':
+          description: Not ready. No dependency internals.
+          headers:
+            Cache-Control:
+              "$ref": "#/components/headers/NoStore"
+            X-Request-Id:
+              "$ref": "#/components/headers/RequestId"
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/HealthResponse"
+              example:
+                status: DOWN
+components:
+  parameters:
+    Code:
+      name: code
+      in: path
+      required: true
+      description: Eight case-sensitive Base62 characters; malformed redirect code
+        returns 404, not DTO-validation 400.
+      schema:
+        type: string
+      example: Ab3dE9xQ
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      description: One header; replay window is half-open 24 hours. Matching replay
+        returns original 201 result even if link is now inactive. Do not send secrets.
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 128
+        pattern: "^[A-Za-z0-9._:-]+$"
+      example: demo-create-001
+    From:
+      name: from
+      in: query
+      required: false
+      description: Inclusive UTC date. Both supplied or both absent; from < to; max
+        30 days.
+      schema:
+        type: string
+        format: date
+    To:
+      name: to
+      in: query
+      required: false
+      description: Exclusive UTC date. Both supplied or both absent; from < to; max
+        30 days.
+      schema:
+        type: string
+        format: date
+  headers:
+    NoStore:
+      description: Do not cache this response.
+      schema:
+        type: string
+        enum:
+        - no-store
+      example: no-store
+    RequestId:
+      description: Fresh server-generated correlation ID; inbound value ignored.
+      schema:
+        type: string
+        format: uuid
+      example: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+  schemas:
+    CreateLinkRequest:
+      type: object
+      additionalProperties: false
+      required:
+      - url
+      properties:
+        url:
+          type: string
+          format: uri
+          minLength: 1
+          maxLength: 2048
+          description: Absolute HTTP/HTTPS. No whitespace padding, userinfo, control
+            characters, private/local literals or own public host. See docs/phase0-contracts.md
+            for ASCII serialization policy.
+    LinkResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - shortUrl
+      - url
+      - createdAt
+      - disabledAt
+      properties:
+        code:
+          type: string
+          pattern: "^[A-Za-z0-9]{8}$"
+          minLength: 8
+          maxLength: 8
+          example: Ab3dE9xQ
+        shortUrl:
+          type: string
+          format: uri
+        url:
+          type: string
+          format: uri
+          maxLength: 2048
+        createdAt:
+          type: string
+          format: date-time
+          description: Offset required on input, UTC on output, years 0001–9999, at
+            most six fractional digits.
+        disabledAt:
+          type: string
+          format: date-time
+          description: Offset required on input, UTC on output, years 0001–9999, at
+            most six fractional digits.
+          nullable: true
+    ApiError:
+      type: object
+      additionalProperties: false
+      required:
+      - code
+      - message
+      - requestId
+      properties:
+        code:
+          type: string
+          enum:
+          - INVALID_REQUEST
+          - INVALID_URL
+          - INVALID_IDEMPOTENCY_KEY
+          - UNSUPPORTED_MEDIA_TYPE
+          - PAYLOAD_TOO_LARGE
+          - LINK_NOT_FOUND
+          - LINK_INACTIVE
+          - IDEMPOTENCY_CONFLICT
+          - DEPENDENCY_UNAVAILABLE
+          - METHOD_NOT_ALLOWED
+          - INTERNAL_ERROR
+        message:
+          type: string
+          minLength: 1
+        requestId:
+          type: string
+          format: uuid
+    ApiErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - error
+      properties:
+        error:
+          "$ref": "#/components/schemas/ApiError"
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - UP
+          - DOWN
+  responses:
+    BadRequest:
+      description: Invalid request or validation failure.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: INVALID_REQUEST
+              message: Invalid request or validation failure.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    NotFound:
+      description: Link unknown; invalid public codes also return this status.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: LINK_NOT_FOUND
+              message: Link unknown; invalid public codes also return this status.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    Conflict:
+      description: Live idempotency key has a different normalized request.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: IDEMPOTENCY_CONFLICT
+              message: Live idempotency key has a different normalized request.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    TooLarge:
+      description: Body exceeds 16 KiB; ingress-level bodies may differ.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: PAYLOAD_TOO_LARGE
+              message: Body exceeds 16 KiB; ingress-level bodies may differ.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    UnsupportedMedia:
+      description: Creation supports application/json only.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: UNSUPPORTED_MEDIA_TYPE
+              message: Creation supports application/json only.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    Gone:
+      description: Disabled link (LINK_INACTIVE).
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: LINK_INACTIVE
+              message: The link is disabled.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    Unavailable:
+      description: Database/schema dependency or bounded fallback unavailable.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: DEPENDENCY_UNAVAILABLE
+              message: Database/schema dependency or bounded fallback unavailable.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    InternalError:
+      description: Unexpected app failure with no sensitive details.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/ApiErrorResponse"
+          example:
+            error:
+              code: INTERNAL_ERROR
+              message: Unexpected app failure with no sensitive details.
+              requestId: 9f05af31-3478-4a1d-9bb2-cfbec41101b4
+    HeadNotFound:
+      description: No body. Link not found or malformed code.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+    HeadGone:
+      description: No body. Disabled link.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+    HeadUnavailable:
+      description: No body. Database-dependent resolution unavailable.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"
+    HeadInternalError:
+      description: No body. Unexpected application failure.
+      headers:
+        Cache-Control:
+          "$ref": "#/components/headers/NoStore"
+        X-Request-Id:
+          "$ref": "#/components/headers/RequestId"

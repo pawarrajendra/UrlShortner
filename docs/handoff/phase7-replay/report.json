@@ -1,0 +1,20 @@
+{
+  "sourceRevision": "fc82a265285e694a9334d19c2c8bd0532c2153ad",
+  "project": "urlshortener-p7-c9ac896832",
+  "startedAt": "2026-10-12T01:19:14.029466+00:00",
+  "checks": [
+    "Clean committed-source archive: Maven clean verify passed with shared download cache, no copied build output",
+    "Fresh full Compose bootstrap, V1/V2/V3 migration and public readiness passed",
+    "Create, keyed replay, metadata, exact GET/HEAD redirect semantics and one eventual GET event passed",
+    "Disable convergence and bodyless HEAD errors passed",
+    "Compose down/up with retained volume preserved disabled mapping, original keyed replay and committed event",
+    "Isolated checksum mismatch caused nonzero migration exit and blocked application startup; stored rows retained",
+    "Fixture history restoration and migration replay recovered without deleting persisted data"
+  ],
+  "passed": true,
+  "cleanup": true,
+  "imageId": "sha256:ad5ec930d5b5be3545b36ebb070d79fb4a456cf386818e5c1485c3a7069aea3a",
+  "migrationFailureMessage": "Startup failed (details intentionally redacted)",
+  "migrationFailureExit": 1,
+  "finishedAt": "2026-10-12T01:21:57.451818+00:00"
+}
